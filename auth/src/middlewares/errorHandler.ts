@@ -1,0 +1,28 @@
+// import { DatabaseConnectionEror } from './../errors/database-connection-error';
+// @types
+import { Request, Response, NextFunction } from 'express';
+import { CustomError } from '../errors/custom-error';
+
+export const errorHandler = (
+  err: Error, 
+  req: Request, 
+  res: Response, 
+  Next: NextFunction
+) => {
+
+  if (err instanceof CustomError) {    
+    return res.status(err.statusCode).send({
+      errors: err.serializeErrors()
+    });
+  }
+
+  // if (err instanceof DatabaseConnectionEror) {
+  //   return res.status(err.statusCode).send({
+  //     errors: err.serializeErrors()
+  //   });
+  // }
+
+  res.status(400).send({
+    errors: [{ message: 'Something went wrong.'}]
+  })
+}

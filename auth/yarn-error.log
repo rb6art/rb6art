@@ -1,0 +1,36 @@
+Arguments: 
+  /usr/local/bin/node /Users/cdub/.yarn/bin/yarn.js add typescript ts-node-dev express @type/express
+
+PATH: 
+  /Users/cdub/.yarn/bin:/Users/cdub/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.9.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@type%2fexpress: Not found
+      at Request.params.callback [as _callback] (/Users/cdub/.yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/Users/cdub/.yarn/lib/cli.js:140749:22)
+      at Request.emit (events.js:314:20)
+      at Request.<anonymous> (/Users/cdub/.yarn/lib/cli.js:141721:10)
+      at Request.emit (events.js:314:20)
+      at IncomingMessage.<anonymous> (/Users/cdub/.yarn/lib/cli.js:141643:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1244:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
