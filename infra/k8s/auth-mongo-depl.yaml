@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-mongo
+  template:
+    metadata:
+      labels:
+        app: auth-mongo
+    spec:
+      containers:
+        - name: auth-mongo
+          image: mongo
+          # image: gcr.io/ticketing-dev-305621/auth
+          # resources:
+          #   limits:
+          #     memory: "256Mi"
+          #     cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-mongo-clusterip-service
+spec:
+  selector:
+    app: auth-mongo
+  type: ClusterIP
+  ports:
+    - name: auth-mongo-db
+      protocol: TCP
+      port: 27017 # default port that mongo is listening to.
+      targetPort: 27017
