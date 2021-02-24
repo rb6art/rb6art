@@ -1,12 +1,24 @@
-
 import express from "express";
 import { body } from 'express-validator'
-import { getCurrentUser, postLogin } from '../routeControllers/authController';
-import { validateRequest } from './../middlewares/validate-request';
-import { postSignup } from '../routeControllers/signupController';
-import { postSignin } from './../routeControllers/signinController';
+import { validateRequest } from '../middlewares/validateRequest';
+import { currentUser } from './../middlewares/currentUser';
+import { postSignupController } from '../routeControllers/signupController';
+import { postSigninController } from './../routeControllers/signinController';
+import { getCurrentUser } from './../routeControllers/currentUserController';
+import { signout } from './../routeControllers/signoutController';
 
 const router = express.Router();
+
+router.get(
+  "/user/currentuser",
+  currentUser,
+  getCurrentUser
+);
+
+router.post(
+  '/user/signout',
+  signout
+)
 
 router.post(
   "/user/signin",
@@ -20,10 +32,10 @@ router.post(
       .withMessage("Password must be supplied."),
   ],
   validateRequest,
-  postSignin
+  postSigninController
 );
 
-router.post(
+router.post( 
   "/user/signup",
   [
     body('email')
@@ -35,14 +47,7 @@ router.post(
       .withMessage("Password needs to be between 6 and 20 chars."),
   ],
   validateRequest,
-  postSignup
+  postSignupController
 );
-
-router.post(
-  "/login",
-  postLogin
-);
-
-router.get("/user/currentuser", getCurrentUser)
 
 export { router as authRoutes }
