@@ -1,36 +1,6 @@
-import express from 'express';
-import cookieSession from 'cookie-session'
-import 'express-async-errors';
 import mongoose from 'mongoose';
-import { json } from 'body-parser'
-import { authRoutes } from './routes/authRoutes';
-import { errorHandler } from './middlewares/errorHandler';
-import { NotFoundError } from './errors/not-found-error';
-
-const app = express();
-
-/**
-  We need this because  we are using ingress nginx proxy. 
-  By default express will trust traffic even though its coming form that proxy.
-*/
-app.set('trust proxy', true);
-
-app.use(json());
-app.use(
-  cookieSession({
-    signed: false,
-    secure: true
-  })
-);
-
-// Middlewere Routes
-app.use('/api', authRoutes);
-
-app.all('*', async () => {
-  throw new NotFoundError();
-});
-
-app.use(errorHandler);
+import { DatabaseConnectionEror } from './errors/database-connection-error';
+import { app } from './app';
 
 const start = async () => {
 
@@ -49,9 +19,8 @@ const start = async () => {
     )
     console.log('Donnected to db')
   } catch (err) {
-    console.error(err);
+    throw new DatabaseConnectionEror();
   }
-
   app.listen(3000, () => {
     console.log('listening on port 3000.');
   });
