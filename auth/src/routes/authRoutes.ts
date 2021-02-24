@@ -1,6 +1,8 @@
+
 import express from "express";
 import { body } from 'express-validator'
 import { getCurrentUser, postLogin } from '../routeControllers/authController';
+import { validateRequest } from './../middlewares/validate-request';
 import { postSignup } from '../routeControllers/signupController';
 import { postSignin } from './../routeControllers/signinController';
 
@@ -17,6 +19,7 @@ router.post(
       .notEmpty()
       .withMessage("Password must be supplied."),
   ],
+  validateRequest,
   postSignin
 );
 
@@ -31,6 +34,7 @@ router.post(
       .isLength({ min: 6, max: 20 })
       .withMessage("Password needs to be between 6 and 20 chars."),
   ],
+  validateRequest,
   postSignup
 );
 
