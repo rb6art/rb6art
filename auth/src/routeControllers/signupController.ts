@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { AuthenticationError } from '../errors/authentication-errors'
 import { User } from '../model/user'
 
+// user/signup
 export const postSignupController = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   const userData = await User.findOne({
@@ -25,5 +26,5 @@ export const postSignupController = async (req: Request, res: Response, next: Ne
     jwt: JWTService.getToken(user.email, user.id)
   }
 
-  res.status(201).send(user)
+  res.status(201).send(user);
 }
