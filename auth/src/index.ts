@@ -1,13 +1,27 @@
-import express from "express";
+import express from 'express';
+import cookieSession from 'cookie-session'
 import 'express-async-errors';
 import mongoose from 'mongoose';
-import { json } from "body-parser"
+import { json } from 'body-parser'
 import { authRoutes } from './routes/authRoutes';
 import { errorHandler } from './middlewares/errorHandler';
-import { NotFoundError } from "./errors/not-found-error";
+import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
+
+/**
+  We need this because  we are using ingress nginx proxy. 
+  By default express will trust traffic even though its coming form that proxy.
+*/
+app.set('trust proxy', true);
+
 app.use(json());
+app.use(
+  cookieSession({
+    signed: false,
+    secure: true
+  })
+);
 
 // Middlewere Routes
 app.use('/api', authRoutes);
@@ -19,6 +33,11 @@ app.all('*', async () => {
 app.use(errorHandler);
 
 const start = async () => {
+
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET must be defined.')
+  }
+
   try {
     await mongoose.connect(
       'mongodb://auth-mongo-clusterip-service:27017/auth',

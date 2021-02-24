@@ -1,29 +1,36 @@
 import express from "express";
 import { body } from 'express-validator'
-import { postSignin, getCurrentUser, postLogin } from '../routeControllers/authController';
+import { getCurrentUser, postLogin } from '../routeControllers/authController';
 import { postSignup } from '../routeControllers/signupController';
+import { postSignin } from './../routeControllers/signinController';
 
 const router = express.Router();
 
-const validation = [
-  body('email')
-    .isEmail()
-    .withMessage('Email must be valid.'),
-  body('password')
-    .trim()
-    .isLength({ min: 6, max: 20})
-    .withMessage("Password needs to be between 6 and 20 chars."),
-];
-
 router.post(
   "/user/signin",
-  validation,
+  [
+    body('email')
+      .isEmail()
+      .withMessage('Email must be valid.'),
+    body('password')
+      .trim()
+      .notEmpty()
+      .withMessage("Password must be supplied."),
+  ],
   postSignin
 );
 
 router.post(
-  "/user/signup", 
-  validation,
+  "/user/signup",
+  [
+    body('email')
+      .isEmail()
+      .withMessage('Email must be valid.'),
+    body('password')
+      .trim()
+      .isLength({ min: 6, max: 20 })
+      .withMessage("Password needs to be between 6 and 20 chars."),
+  ],
   postSignup
 );
 
