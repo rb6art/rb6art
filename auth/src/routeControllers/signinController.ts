@@ -16,7 +16,6 @@ export const postSigninController = async (req: Request, res: Response, next: Ne
   }
 
   const passMatch = await PasswordService.compare(userData.password, password);
-
   if (!passMatch) {
     throw new AuthenticationError('Password is not correct.')
   }
