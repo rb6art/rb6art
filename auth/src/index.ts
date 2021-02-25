@@ -17,7 +17,7 @@ const start = async () => {
         useCreateIndex: true
       }
     )
-    console.log('Donnected to db')
+    console.log('Connected to db')
   } catch (err) {
     throw new DatabaseConnectionEror();
   }

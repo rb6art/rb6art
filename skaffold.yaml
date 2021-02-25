@@ -17,6 +17,16 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image:  cdub/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.ts'
+            dest: .
+          - src: '**/*.tsx'
+            dest: .
 
 # This config is used if you want to use google cloud..
 # build:

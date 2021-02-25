@@ -8,10 +8,15 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: ticketing.dev
+    - host: rb6art.dev
       http:
         paths:
           - path: /api/user/?(.*)
             backend:
               serviceName: auth-clusterip-service
               servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-clusterip-service
+              servicePort: 3000
+              
