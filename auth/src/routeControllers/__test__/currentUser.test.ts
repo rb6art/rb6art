@@ -1,26 +1,17 @@
 import request from "supertest";
 import { app } from '../../app';
 
-const signupURL: string = '/api/user/signup';
-const currentUserURL: string = '/api/user/currentUser';
+const currentUserURL = '/api/user/currentUser';
 
 describe('GET api/user/currentUser', () => {
 
   it('should return a 200 with the currentUser data', async () => {
 
-    const signupResponse = await request(app)
-      .post(signupURL)
-      .send({
-        email: "test@test.com",
-        password: "password"
-      })
-      .expect(201);
-
-    const session = signupResponse.get('Set-Cookie');
+    const sessionCookie = await global.signin();
 
     const req = await request(app)
       .get(currentUserURL)
-      .set('Cookie', session)
+      .set('Cookie', sessionCookie)
       .expect(200);
 
     expect(req.body).toHaveProperty('currentUser');
