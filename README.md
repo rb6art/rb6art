@@ -1,5 +1,4 @@
-# Microservice app for educational purposes.
-
+# Microservice app allowing users to upload and view Rainbow 6 Art.
 
 Using:
   - Next.js
