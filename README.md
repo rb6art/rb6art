@@ -4,7 +4,7 @@ Using:
   - Next.js
   - Express
   - Docker
-  - NGINX
   - Kubernetes
   - Ingress
+  - NGINX
   - Skaffold
