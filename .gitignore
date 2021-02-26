@@ -1,2 +1,4 @@
 auth/
 client/
+.prettierrc.json
+.vscode/

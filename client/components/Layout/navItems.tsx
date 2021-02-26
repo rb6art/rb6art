@@ -16,7 +16,7 @@ function createRoute(
   pathname: string,
   children: string,
   leftAddon: ReactNode | undefined,
-  parentId: string | null = null
+  parentId: string | null = null,
 ): LayoutNavigationItem {
   return {
     itemId: pathname,

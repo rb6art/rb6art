@@ -34,5 +34,5 @@ yarn-error.log*
 .vercel
 
 # nextjs
-.next/cache/
-.next/static/
+.next/
+
