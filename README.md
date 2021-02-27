@@ -2,6 +2,7 @@
 
 Using:
   - Next.js
+  - Chakra UI
   - Express
   - Docker
   - Kubernetes
