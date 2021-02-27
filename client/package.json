@@ -1,11 +1,10 @@
 {
-  "name": "rb6art-client",
+  "name": "with-chakra-ui-typescript",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "prod": "next build; next start"
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.5",
@@ -13,6 +12,7 @@
     "@chakra-ui/theme-tools": "1.0.4",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
+    "axios": "^0.21.1",
     "framer-motion": "^3.5.2",
     "next": "latest",
     "react": "^17.0.1",
