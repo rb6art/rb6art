@@ -17,7 +17,7 @@ interface ValidationError {
   field: string
 }
 
-const SignUpForm = () => {
+const SignupForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShow] = useState(false)
@@ -121,11 +121,11 @@ const SignUpForm = () => {
           mt={4}
           onClick={handleSubmit}
         >
-          Sign Up
+          Signup
         </Button>
       </form>
     </Container>
   )
 }
 
-export default SignUpForm
+export default SignupForm
