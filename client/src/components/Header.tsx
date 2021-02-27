@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Heading, Box, Link } from '@chakra-ui/react'
-import { DarkModeSwitch } from './DarkModeSwitch'
+import ThemeToggler from './ThemeToggler'
 import SignoutButton from './auth/SignoutButton'
 import SignupButton from './auth/SignupButton'
 
@@ -64,7 +64,7 @@ const Header = () => {
         <SignoutButton />
       </Flex>
       <Box>
-        <DarkModeSwitch />
+        <ThemeToggler />
       </Box>
     </Flex>
   )
