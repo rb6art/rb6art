@@ -1,8 +1,8 @@
 import { Link as ChakraLink, Button } from '@chakra-ui/react'
 
-import { Container } from './Container'
+import { Container } from './base/Container'
 
-export const CTA = () => (
+export const StickyBannerBottom = () => (
   <Container
     flexDirection="row"
     position="fixed"
