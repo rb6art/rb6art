@@ -3,7 +3,7 @@ import { Button } from '@chakra-ui/react'
 const SignupButton = () => {
   const navigateToSignupPage = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault()
-    window.location.href = '/auth/signup'
+    window.location.href = '/auth/signin'
   }
 
   return (
@@ -14,7 +14,7 @@ const SignupButton = () => {
       size="sm"
       onClick={navigateToSignupPage}
     >
-      Create account
+      Sign In
     </Button>
   )
 }

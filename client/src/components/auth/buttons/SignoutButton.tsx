@@ -10,14 +10,13 @@ const SignoutButton = (): ReactJSXElement => (
     size="sm"
     onClick={async () => {
       try {
-        const response = axios.post('/api/user/signout')
-        console.log(response)
+        await axios.post('/api/user/signout')
       } catch (error) {
-        console.error(error)
+        // console.error(error)
       }
     }}
   >
-    Signout{' '}
+    Signout
   </Button>
 )
 
