@@ -1,13 +1,12 @@
-import React from 'react'
 import { Flex, Heading, Box, Link } from '@chakra-ui/react'
 import ThemeToggler from './ThemeToggler'
-import SignoutButton from './auth/SignoutButton'
-import SignupButton from './auth/SignupButton'
+import SignoutButton from './/auth/buttons/SignoutButton'
+import CreateAccoutButton from './auth/buttons/CreateAccoutButton'
+import SigninButton from './auth/buttons/SigninButton'
+// import ProfileMenu from './ProfileMenu'
+import { useEffect } from 'react'
 
 const Header = () => {
-  // const [showMobleMenu, setShow] = useState(false);
-  // const handleToggle = () => setShow(!showMobleMenu);
-
   const menuItems = [
     {
       title: 'Posts',
@@ -19,7 +18,6 @@ const Header = () => {
     <Flex
       as="nav"
       align="center"
-      // justify="space-between"
       wrap="wrap"
       padding=".5rem"
       bg="orange.400"
@@ -32,18 +30,6 @@ const Header = () => {
           </Heading>
         </Link>
       </Flex>
-
-      {/* <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
-        <svg
-          fill="white"
-          width="12px"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </Box> */}
 
       <Flex alignItems="center" flexGrow={1}>
         {menuItems.map((item) => (
@@ -60,12 +46,14 @@ const Header = () => {
       </Flex>
 
       <Flex>
-        <SignupButton />
+        <SigninButton />
         <SignoutButton />
+        <CreateAccoutButton />
       </Flex>
       <Box>
         <ThemeToggler />
       </Box>
+      {/* <ProfileMenu></ProfileMenu> */}
     </Flex>
   )
 }

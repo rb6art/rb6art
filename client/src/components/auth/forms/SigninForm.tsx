@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import axios from 'axios'
 import {
   Container,
   FormControl,
@@ -8,63 +7,53 @@ import {
   InputGroup,
   InputRightElement,
   Button,
+  Heading,
   Text,
   Flex,
+  useColorModeValue,
 } from '@chakra-ui/react'
+import useRequest from '../hooks/use-request'
 
-interface ValidationError {
-  message: string
-  field: string
-}
+const SignInForm = () => {
+  // Theme setup
+  const bg = useColorModeValue('orange.300', 'orange.300')
+  const color = useColorModeValue('white', 'gray.800')
+  const hoverColor = 'orange.400'
+  const inputBorderColor = useColorModeValue('gray.400', 'gray.200')
 
-const SignupForm = () => {
+  // Local state
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShow] = useState(false)
-  const [isEmailValid, setIsEmailValid] = useState(true)
-  const [isPassValid, setIsPassValid] = useState(true)
-  const [emailErrorMsg, setEmailErrorMsg] = useState('')
-  const [passErrorMsg, setPassMsg] = useState('')
+
+  const {
+    makeRequest,
+    isEmailValid,
+    isPassValid,
+    emailErrorMsg,
+    passErrorMsg,
+  } = useRequest({
+    url: '/api/user/signin',
+    method: 'post',
+    body: {
+      email,
+      password,
+    },
+  })
 
   const handleShowPass = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     setShow(!showPassword)
   }
 
-  const handleErrors = (errors: ValidationError[]) => {
-    if (errors.length > 0) {
-      errors.map((err: ValidationError) => {
-        if (err.field) {
-          switch (err.field.toLowerCase()) {
-            case 'email':
-              setIsEmailValid(false)
-              setEmailErrorMsg(err.message)
-              break
-            case 'password':
-              setIsPassValid(false)
-              setPassMsg(err.message)
-              break
-            default:
-              break
-          }
-        }
-      })
-    }
-  }
-
   const handleSubmit = async (event?: React.MouseEvent<HTMLElement>) => {
     if (event) event.preventDefault()
-    try {
-      await axios.post('/api/user/signup', {
-        email,
-        password,
-      })
-    } catch (error) {
-      handleErrors(error.response.data.errors)
-    }
+    await makeRequest()
   }
+
   return (
-    <Container>
+    <Container mt="28">
+      <Heading mb="10">Login</Heading>
       <form>
         <FormControl id="email" pb="3" isRequired>
           <Flex alignItems="center" pb="5px">
@@ -78,6 +67,7 @@ const SignupForm = () => {
 
           <Input
             isInvalid={!isEmailValid}
+            borderColor={inputBorderColor}
             type="email"
             placeholder="Enter Email"
             onChange={(event) => {
@@ -101,6 +91,7 @@ const SignupForm = () => {
               pr="4.5rem"
               type={showPassword ? 'text' : 'password'}
               placeholder="Enter password"
+              borderColor={inputBorderColor}
               onChange={(event) => {
                 setPassword(event.target.value)
               }}
@@ -114,18 +105,21 @@ const SignupForm = () => {
         </FormControl>
 
         <Button
+          bg={bg}
+          color={color}
           type="submit"
-          colorScheme="facebook"
           variant="outline"
           width="full"
           mt={4}
           onClick={handleSubmit}
+          _hover={{ bg: hoverColor }}
+          _focus={{ boxShadow: 'outline' }}
         >
-          Signup
+          Login
         </Button>
       </form>
     </Container>
   )
 }
 
-export default SignupForm
+export default SignInForm
