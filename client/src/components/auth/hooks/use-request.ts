@@ -4,10 +4,20 @@ import axios from 'axios';
 interface RequestDocument {
   url: string
   method: string
-  body: object
+  body: object,
+  onSuccess(res: {}): void
+}
+interface ValidationError {
+  message: string
+  field: string
+}
+export interface SuccessResponse {
+  creationDate: string
+  email: string
+  id: string
 }
 
-export default ({ url, method, body }: RequestDocument) => {
+const useRequest = ({ url, method, body, onSuccess }: RequestDocument) => {
 
   const [isEmailValid, setIsEmailValid] = useState(true)
   const [isPassValid, setIsPassValid] = useState(true)
@@ -18,6 +28,11 @@ export default ({ url, method, body }: RequestDocument) => {
     try {
       // @ts-ignore: Unreachable code error
       const response = await axios[method](url, body)
+
+      if (onSuccess) {
+        onSuccess(response.data)
+      }
+
       return {
         success: true,
         data: response.data
@@ -25,11 +40,6 @@ export default ({ url, method, body }: RequestDocument) => {
     } catch (error) {
       handleErrors(error.response.data.errors)
     }
-  }
-
-  interface ValidationError {
-    message: string
-    field: string
   }
 
   const handleErrors = (errors: ValidationError[]) => {
@@ -54,5 +64,7 @@ export default ({ url, method, body }: RequestDocument) => {
   }
 
 
-  return { makeRequest, isEmailValid, isPassValid, emailErrorMsg, passErrorMsg }
+  return [isEmailValid, isPassValid, emailErrorMsg, passErrorMsg, makeRequest]
 }
+
+export default useRequest
