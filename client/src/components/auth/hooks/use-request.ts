@@ -64,7 +64,7 @@ const useRequest = ({ url, method, body, onSuccess }: RequestDocument) => {
   }
 
 
-  return [isEmailValid, isPassValid, emailErrorMsg, passErrorMsg, makeRequest]
+  return { isEmailValid, isPassValid, emailErrorMsg, passErrorMsg, makeRequest }
 }
 
 export default useRequest
