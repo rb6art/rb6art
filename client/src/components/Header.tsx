@@ -1,10 +1,13 @@
 import { Flex, Heading, Box, Link } from '@chakra-ui/react'
 import ThemeToggler from './ThemeToggler'
-import SignoutButton from './/auth/buttons/SignoutButton'
-import CreateAccoutButton from './auth/buttons/CreateAccoutButton'
-import SigninButton from './auth/buttons/SigninButton'
+import AuthButton from './auth/buttons/AuthButton'
+import {
+  SignInAction,
+  SignOutAction,
+  SignUpAction,
+} from './auth/buttons/actions/ClickActions'
+
 // import ProfileMenu from './ProfileMenu'
-import { useEffect } from 'react'
 
 const Header = () => {
   const menuItems = [
@@ -46,9 +49,9 @@ const Header = () => {
       </Flex>
 
       <Flex>
-        <SigninButton />
-        <SignoutButton />
-        <CreateAccoutButton />
+        <AuthButton text="Sign In" onClickHandler={SignInAction} />
+        <AuthButton text="Signout" onClickHandler={SignOutAction} />
+        <AuthButton text="Create Account" onClickHandler={SignUpAction} />
       </Flex>
       <Box>
         <ThemeToggler />
