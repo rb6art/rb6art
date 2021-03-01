@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react'
+import { Button, useBreakpointValue } from '@chakra-ui/react'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 
 interface AuthButtonProps {
@@ -9,18 +9,21 @@ interface AuthButtonProps {
 const AuthButton = ({
   text,
   onClickHandler,
-}: AuthButtonProps): ReactJSXElement => (
-  <Button
-    bg="transparent"
-    border="1px"
-    mr="15px"
-    size="sm"
-    onClick={(event): void => {
-      onClickHandler(event)
-    }}
-  >
-    {text}
-  </Button>
-)
+}: AuthButtonProps): ReactJSXElement => {
+  const buttonSize = useBreakpointValue({ base: 'xs', md: 'sm' })
 
+  return (
+    <Button
+      bg="transparent"
+      border="1px"
+      mr="15px"
+      size={buttonSize}
+      onClick={(event): void => {
+        onClickHandler(event)
+      }}
+    >
+      {text}
+    </Button>
+  )
+}
 export default AuthButton

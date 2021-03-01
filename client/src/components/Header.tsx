@@ -1,4 +1,4 @@
-import { Flex, Heading, Box, Link, useBreakpointValue } from '@chakra-ui/react'
+import { Flex, Heading, Box, Link } from '@chakra-ui/react'
 import ThemeToggler from './ThemeToggler'
 import AuthButton from './auth/buttons/AuthButton'
 import {
@@ -10,8 +10,6 @@ import {
 // import ProfileMenu from './ProfileMenu'
 
 const Header = () => {
-  // const buttonVariants = useBreakpointValue({})
-
   const menuItems = [
     {
       title: 'Posts',
