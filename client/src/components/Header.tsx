@@ -1,7 +1,11 @@
 import { Flex, Heading, Box, Link, useBreakpointValue } from '@chakra-ui/react'
 import ThemeToggler from './ThemeToggler'
-import axios from 'axios'
 import AuthButton from './auth/buttons/AuthButton'
+import {
+  SignInAction,
+  SignOutAction,
+  SignUpAction,
+} from './auth/buttons/actions/ClickActions'
 
 // import ProfileMenu from './ProfileMenu'
 
@@ -47,32 +51,9 @@ const Header = () => {
       </Flex>
 
       <Flex>
-        <AuthButton
-          text="Sign In"
-          onClickHandler={(event: React.MouseEvent<HTMLElement>) => {
-            event.preventDefault()
-            window.location.href = '/auth/signin'
-          }}
-        />
-        {/* <SignoutButton /> */}
-
-        <AuthButton
-          text="Signout"
-          onClickHandler={async () => {
-            try {
-              await axios.post('/api/user/signout')
-            } catch (error) {
-              // console.error(error)
-            }
-          }}
-        />
-        <AuthButton
-          text="Create Account"
-          onClickHandler={(event: React.MouseEvent<HTMLElement>): void => {
-            event.preventDefault()
-            window.location.href = '/auth/signup'
-          }}
-        />
+        <AuthButton text="Sign In" onClickHandler={SignInAction} />
+        <AuthButton text="Signout" onClickHandler={SignOutAction} />
+        <AuthButton text="Create Account" onClickHandler={SignUpAction} />
       </Flex>
       <Box>
         <ThemeToggler />
