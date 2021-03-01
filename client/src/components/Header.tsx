@@ -1,12 +1,13 @@
-import { Flex, Heading, Box, Link } from '@chakra-ui/react'
+import { Flex, Heading, Box, Link, useBreakpointValue } from '@chakra-ui/react'
 import ThemeToggler from './ThemeToggler'
-import SignoutButton from './/auth/buttons/SignoutButton'
-import CreateAccoutButton from './auth/buttons/CreateAccoutButton'
-import SigninButton from './auth/buttons/SigninButton'
+import axios from 'axios'
+import AuthButton from './auth/buttons/AuthButton'
+
 // import ProfileMenu from './ProfileMenu'
-import { useEffect } from 'react'
 
 const Header = () => {
+  // const buttonVariants = useBreakpointValue({})
+
   const menuItems = [
     {
       title: 'Posts',
@@ -46,9 +47,32 @@ const Header = () => {
       </Flex>
 
       <Flex>
-        <SigninButton />
-        <SignoutButton />
-        <CreateAccoutButton />
+        <AuthButton
+          text="Sign In"
+          onClickHandler={(event: React.MouseEvent<HTMLElement>) => {
+            event.preventDefault()
+            window.location.href = '/auth/signin'
+          }}
+        />
+        {/* <SignoutButton /> */}
+
+        <AuthButton
+          text="Signout"
+          onClickHandler={async () => {
+            try {
+              await axios.post('/api/user/signout')
+            } catch (error) {
+              // console.error(error)
+            }
+          }}
+        />
+        <AuthButton
+          text="Create Account"
+          onClickHandler={(event: React.MouseEvent<HTMLElement>): void => {
+            event.preventDefault()
+            window.location.href = '/auth/signup'
+          }}
+        />
       </Flex>
       <Box>
         <ThemeToggler />
