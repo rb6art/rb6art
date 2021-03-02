@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Router from 'next/router'
 import {
   Container,
   FormControl,
@@ -12,7 +13,7 @@ import {
   Flex,
   useColorModeValue,
 } from '@chakra-ui/react'
-import useRequest from '../hooks/use-request'
+import useRequest, { SuccessResponse } from '../hooks/use-request'
 
 const SignupForm = () => {
   // Theme setup
@@ -38,6 +39,10 @@ const SignupForm = () => {
     body: {
       email,
       password,
+    },
+    onSuccess: (res: SuccessResponse) => {
+      console.log(res)
+      Router.push('/')
     },
   })
 
