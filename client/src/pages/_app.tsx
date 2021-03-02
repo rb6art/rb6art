@@ -4,6 +4,7 @@ import theme from '../theme'
 import { AppProps } from 'next/app'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { UserProvider } from '../context/User/UserProvider'
 
 const PageWrapper = styled.div`
   display: flex;
@@ -15,10 +16,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <PageWrapper>
-        <Header />
-        <Component {...pageProps} />
-        <Divider />
-        <Footer />
+        <UserProvider>
+          <Header />
+          <Component {...pageProps} />
+          <Divider />
+          <Footer />
+        </UserProvider>
       </PageWrapper>
     </ChakraProvider>
   )

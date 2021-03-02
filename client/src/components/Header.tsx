@@ -6,10 +6,16 @@ import {
   SignOutAction,
   SignUpAction,
 } from './auth/buttons/actions/ClickActions'
+import { useUser } from '../context/User/UserProvider'
 
 // import ProfileMenu from './ProfileMenu'
 
 const Header = () => {
+  const userState = useUser()
+  const email = userState.email
+
+  console.log(email)
+
   const menuItems = [
     {
       title: 'Posts',
