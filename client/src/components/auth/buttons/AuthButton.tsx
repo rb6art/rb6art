@@ -15,6 +15,7 @@ const AuthButton = ({
   return (
     <Button
       bg="transparent"
+      transition="none"
       border="1px"
       mr="15px"
       size={buttonSize}

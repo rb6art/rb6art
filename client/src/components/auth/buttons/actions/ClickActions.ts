@@ -9,6 +9,7 @@ export const SignInAction = (event: React.MouseEvent<HTMLElement>): void => {
 export const SignOutAction = async (): Promise<any> => {
   try {
     await axios.post('/api/user/signout')
+    router.push('/')
   } catch (error) {
     // console.error(error)
   }

@@ -7,16 +7,18 @@ interface Children {
 const initialUserState = {
   userID: '',
   email: '',
+  loggedIn: false,
 }
 
 type IUserState = {
-  userID: string
-  email: string
+  userID?: string
+  email?: string
+  loggedIn: boolean
 }
 
 type Dispach = {
   type: string
-  value: string
+  value: string | boolean
 }
 
 type IUserContext = IUserState
@@ -27,6 +29,8 @@ const UserDispatchContext = createContext<DispachContext>(() => null)
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {
+    case 'SET_LOGIN_STATUS':
+      return { ...state, loggedIn: action.value }
     case 'SET_USER_ID':
       return { ...state, userID: action.value }
     case 'SET_EMAIL':
