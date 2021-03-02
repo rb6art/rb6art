@@ -4,12 +4,12 @@ interface Children {
   children: JSX.Element | JSX.Element[]
 }
 
-export const initialUserState = {
+const initialUserState = {
   userID: '',
   email: '',
 }
 
-export type IUserState = {
+type IUserState = {
   userID: string
   email: string
 }
