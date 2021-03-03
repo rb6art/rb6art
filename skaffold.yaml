@@ -9,7 +9,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: cdub/auth
+    - image: cdub/rb6art-auth
       context: auth
       docker:
         dockerfile: Dockerfile
