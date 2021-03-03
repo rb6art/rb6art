@@ -27,6 +27,7 @@ const Header = () => {
       as="nav"
       align="center"
       wrap="wrap"
+      h="50px"
       padding=".5rem"
       bg="orange.400"
       color="white"
