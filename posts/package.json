@@ -1,10 +1,10 @@
 {
-  "name": "auth",
+  "name": "posts",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Chris Whitehead",
   "license": "ISC",
-  "description": "Microservice to handle authentication",
+  "description": "Microservice that handles posts; images, updates, etc..",
+  "main": "index.js",
   "dependencies": {
     "@rb6art/common": "^1.0.19",
     "@types/bcryptjs": "^2.4.2",
