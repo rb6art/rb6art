@@ -2,9 +2,14 @@
   "name": "@rb6art/common",
   "version": "1.0.0",
   "description": "Common code used between services",
-  "main": "index.js",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files": [
+    "./build/**/*"
+  ],
   "scripts": {
-    "build": "tsc"
+    "clear": "del ./build/*",
+    "build": "npm run clear; tsc"
   },
   "keywords": [],
   "author": "",
