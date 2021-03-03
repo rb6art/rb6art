@@ -1,9 +1,9 @@
 {
   "name": "@rb6art/common",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Common code used between services",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/src/index.js",
+  "types": "./build/src/index.d.ts",
   "files": [
     "./build/**/*"
   ],
