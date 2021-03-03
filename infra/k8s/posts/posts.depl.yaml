@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: cdub/rb6art-posts
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://posts-mongo-clusterip-service:27017/posts'
+            - name: JWT_SECRET # This will be the name of the env var .
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_SECRET
+          # image: gcr.io/ticketing-dev-305621/posts
+          # resources:
+          #   limits:
+          #     memory: "256Mi"
+          #     cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-service
+spec:
+  selector:
+    app: posts
+  type: ClusterIP
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
