@@ -26,13 +26,19 @@ const Index = ({ currentUser }: any) => {
 
   useEffect((): void => {
     const user = currentUser
+    if (user) {
+      userDispatch({
+        type: 'SET_LOGIN_STATUS',
+        value: true,
+      })
+    }
     userDispatch({
       type: 'SET_USER_ID',
-      value: user?.userID,
+      value: user?.userID || '',
     })
     userDispatch({
       type: 'SET_EMAIL',
-      value: user?.email,
+      value: user?.email || '',
     })
   }, [currentUser])
 
@@ -59,11 +65,7 @@ const Index = ({ currentUser }: any) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const client = serverSideRequest({ req })
-
   const { data } = await client.get('/api/user/currentuser/')
-
-  console.log(data)
-
   return {
     props: data, // will be passed to the page component as props
   }

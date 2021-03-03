@@ -6,15 +6,14 @@ import {
   SignOutAction,
   SignUpAction,
 } from './auth/buttons/actions/ClickActions'
-import { useUser } from '../context/User/UserProvider'
+import { useUser, useDispatchUser } from '../context/User/UserProvider'
 
 // import ProfileMenu from './ProfileMenu'
 
 const Header = () => {
   const userState = useUser()
-  const email = userState.email
-
-  console.log(email)
+  const userDispatch = useDispatchUser()
+  const loggedIn = userState.loggedIn
 
   const menuItems = [
     {
@@ -55,9 +54,24 @@ const Header = () => {
       </Flex>
 
       <Flex>
-        <AuthButton text="Sign In" onClickHandler={SignInAction} />
-        <AuthButton text="Signout" onClickHandler={SignOutAction} />
-        <AuthButton text="Create Account" onClickHandler={SignUpAction} />
+        {!loggedIn && (
+          <AuthButton text="Sign In" onClickHandler={SignInAction} />
+        )}
+        {loggedIn && (
+          <AuthButton
+            text="Signout"
+            onClickHandler={() => {
+              userDispatch({
+                type: 'SET_LOGIN_STATUS',
+                value: false,
+              })
+              SignOutAction()
+            }}
+          />
+        )}
+        {!loggedIn && (
+          <AuthButton text="Create Account" onClickHandler={SignUpAction} />
+        )}
       </Flex>
       <Box>
         <ThemeToggler />
