@@ -5,7 +5,7 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react'
-import SignoutButton from './auth/buttons/SignoutButton'
+// import SignoutButton from './auth/buttons/AuthButton'
 
 const ProfileMenu = () => {
   return (
@@ -14,9 +14,7 @@ const ProfileMenu = () => {
       <MenuList>
         <MenuGroup title="Profile">
           <MenuItem> My Accout</MenuItem>
-          <MenuItem>
-            <SignoutButton />
-          </MenuItem>
+          <MenuItem>{/* <SignoutButton /> */}</MenuItem>
         </MenuGroup>
       </MenuList>
     </Menu>
