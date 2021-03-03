@@ -39,6 +39,9 @@ const SignInForm = () => {
       email,
       password,
     },
+    onSuccess: (payload) => {
+      console.log(payload)
+    },
   })
 
   const handleShowPass = (event: React.MouseEvent<HTMLElement>) => {
