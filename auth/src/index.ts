@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { DatabaseConnectionEror } from './errors/database-connection-error';
 import { app } from './app';
 
+// import { color } from '@rb6art/common'
+
 const start = async () => {
 
   if (!process.env.JWT_SECRET) {
