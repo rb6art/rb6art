@@ -1,4 +1,5 @@
 auth/
 client/
+common/
 .prettierrc.json
 .vscode/
