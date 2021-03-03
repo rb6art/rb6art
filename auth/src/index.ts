@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
-import { DatabaseConnectionEror } from './errors/database-connection-error';
+import { DatabaseConnectionEror } from '@rb6art/common';
 import { app } from './app';
-
-// import { color } from '@rb6art/common'
 
 const start = async () => {
 

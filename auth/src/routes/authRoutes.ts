@@ -1,11 +1,11 @@
 import express from "express";
 import { body } from 'express-validator'
-import { validateRequest } from '../middlewares/validateRequest';
-import { currentUser } from './../middlewares/currentUser';
+import { currentUser, validateRequest } from '@rb6art/common';
 import { postSignupController } from '../routeControllers/signupController';
 import { postSigninController } from './../routeControllers/signinController';
 import { getCurrentUser } from './../routeControllers/currentUserController';
 import { signout } from './../routeControllers/signoutController';
+
 
 const router = express.Router();
 
@@ -35,7 +35,7 @@ router.post(
   postSigninController
 );
 
-router.post( 
+router.post(
   "/user/signup",
   [
     body('email')

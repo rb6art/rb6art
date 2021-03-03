@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { PasswordService } from '../services/password';
+import { PasswordService } from '@rb6art/common';
 
 // An interface that describes the properties
 // that are required to create a new user.
@@ -44,13 +44,13 @@ const UserSchema = new mongoose.Schema({
       ret.id = ret._id;
       delete ret._id;
       delete ret.password;
-      delete ret.__v;      
+      delete ret.__v;
     }
   }
 });
 
 // Convert the password to a hashed
-UserSchema.pre('save', async function(done) {
+UserSchema.pre('save', async function (done) {
   if (this.isModified('password')) {
     const hashedPass = await PasswordService.convertToHash(
       this.get('password')

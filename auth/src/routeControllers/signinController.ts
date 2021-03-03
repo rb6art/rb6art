@@ -1,11 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { AuthenticationError } from '../errors/authentication-errors'
+import { AuthenticationError, PasswordService, JWTService } from '@rb6art/common'
 import { User } from '../model/user'
-import { PasswordService } from '../services/password';
-import { JWTService } from './../services/jwt';
 
 export const postSigninController = async (req: Request, res: Response, next: NextFunction) => {
-  
+
   const { email, password } = req.body;
   const userData = await User.findOne({
     email: email
