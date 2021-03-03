@@ -2,6 +2,9 @@
   "name": "auth",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Chris Whitehead",
+  "license": "ISC",
+  "description": "Microservice to handle authentication",
   "dependencies": {
     "@rb6art/common": "^1.0.19",
     "@types/bcryptjs": "^2.4.2",
@@ -37,8 +40,5 @@
   },
   "scriptsComments": {
     "test": "The '--no-cache' is used to help jest know when a TS file is changed. JS does not have TS support out of the box.."
-  },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }
