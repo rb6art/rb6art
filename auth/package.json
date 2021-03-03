@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@rb6art/common": "^1.0.18",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-session": "^2.0.42",
     "@types/express": "^4.17.11",
