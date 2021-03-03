@@ -10,7 +10,7 @@ const AuthButton = ({
   text,
   onClickHandler,
 }: AuthButtonProps): ReactJSXElement => {
-  const buttonSize = useBreakpointValue({ base: 'xs', md: 'sm' })
+  // const buttonSize = useBreakpointValue({ base: 'xs', md: 'sm' })
 
   return (
     <Button
@@ -18,7 +18,8 @@ const AuthButton = ({
       transition="none"
       border="1px"
       mr="15px"
-      size={buttonSize}
+      h="30px"
+      size="sm"
       onClick={(event): void => {
         onClickHandler(event)
       }}
