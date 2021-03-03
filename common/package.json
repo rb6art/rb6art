@@ -1,0 +1,16 @@
+{
+  "name": "@rb6art/common",
+  "version": "1.0.0",
+  "description": "Common code used between services",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del-cli": "^3.0.1",
+    "typescript": "^4.2.2"
+  }
+}
