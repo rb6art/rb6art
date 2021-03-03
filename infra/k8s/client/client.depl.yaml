@@ -13,12 +13,12 @@ spec:
         app: client
     spec:
       containers:
-      - name: client
-        image: cdub/client
-        # resources:
-        #   limits:
-        #     memory: "128Mi"
-        #     cpu: "500m"
+        - name: client
+          image: cdub/rb6art-client
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
