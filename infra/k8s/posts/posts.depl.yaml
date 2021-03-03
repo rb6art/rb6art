@@ -16,6 +16,8 @@ spec:
         - name: posts
           image: cdub/rb6art-posts
           env:
+            - name: MONGO_URI
+              value: 'mongodb://posts-mongo-clusterip-service:27017/posts'
             - name: JWT_SECRET # This will be the name of the env var .
               valueFrom:
                 secretKeyRef:
