@@ -3,8 +3,8 @@ import cookieSession from 'cookie-session'
 import 'express-async-errors';
 import { json } from 'body-parser'
 import { authRoutes } from './routes/authRoutes';
-import { errorHandler } from './middlewares/errorHandler';
-import { NotFoundError } from './errors/not-found-error';
+import { NotFoundError, errorHandler } from '@rb6art/common';
+
 
 const app = express();
 

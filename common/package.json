@@ -1,6 +1,6 @@
 {
   "name": "@rb6art/common",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -13,19 +13,21 @@
     "pub": "npm version patch && npm run build && npm publish"
   },
   "keywords": [],
-  "author": "",
+  "author": "Chris Whitehead",
   "license": "ISC",
-  "devDependencies": {
-    "del-cli": "^3.0.0",
-    "typescript": "^3.8.3"
-  },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/cookie-session": "^2.0.39",
     "@types/express": "^4.17.5",
     "@types/jsonwebtoken": "^8.3.9",
+    "bcryptjs": "^2.4.3",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "del-cli": "^3.0.0",
+    "typescript": "^3.8.3"
   }
 }

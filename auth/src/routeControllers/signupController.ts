@@ -1,6 +1,5 @@
-import { JWTService } from './../services/jwt';
+import { AuthenticationError, JWTService } from '@rb6art/common'
 import { Request, Response, NextFunction } from 'express';
-import { AuthenticationError } from '../errors/authentication-errors'
 import { User } from '../model/user'
 
 // user/signup
