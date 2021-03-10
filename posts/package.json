@@ -38,6 +38,13 @@
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
+  },
   "scriptsComments": {
     "test": "The '--no-cache' is used to help jest know when a TS file is changed. JS does not have TS support out of the box.."
   }

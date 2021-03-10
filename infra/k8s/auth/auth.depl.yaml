@@ -16,6 +16,8 @@ spec:
         - name: auth
           image: cdub/rb6art-auth
           env:
+            - name: MONGO_URI
+              value: 'mongodb://auth-mongo-clusterip-service:27017/auth'
             - name: JWT_SECRET # This will be the name of the env var .
               valueFrom:
                 secretKeyRef:

@@ -7,7 +7,7 @@ describe('GET api/user/currentUser', () => {
 
   it('should return a 200 with the currentUser data', async () => {
 
-    const sessionCookie = await global.signin();
+    const sessionCookie = await global.signup();
 
     const req = await request(app)
       .get(currentUserURL)

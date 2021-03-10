@@ -29,7 +29,7 @@
     "jest": "^26.6.3",
     "mongodb-memory-server": "^6.9.3",
     "supertest": "^6.1.3",
-    "ts-jest": "^26.5.2"
+    "ts-jest": "^26.5.3"
   },
   "devDependenciesComments": {
     "mongodb-memory-server": "We are using this so we can test multiple services at once."
@@ -37,6 +37,13 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
   },
   "scriptsComments": {
     "test": "The '--no-cache' is used to help jest know when a TS file is changed. JS does not have TS support out of the box.."
