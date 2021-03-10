@@ -9,7 +9,7 @@ let mongo: MongoMemoryServer;
 declare global {
   namespace NodeJS {
     interface Global {
-      signin(): Promise<string[]>
+      signup(): Promise<string[]>
     }
   }
 }
@@ -42,11 +42,11 @@ afterAll(async () => {
 });
 
 
-// Setting up a reusable signin test.
-global.signin = async () => {
+// Setting up a reusable signup test.
+global.signup = async () => {
   const email = 'test@test.com';
   const password = 'password';
-  const signupURL = '/api/user/signin';
+  const signupURL = '/api/user/signup';
 
   const signupResponse = await request(app)
     .post(signupURL)

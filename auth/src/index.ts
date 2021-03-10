@@ -8,16 +8,20 @@ const start = async () => {
     throw new Error('JWT_SECRET must be defined.')
   }
 
+  if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI must be defined.')
+  }
+
   try {
     await mongoose.connect(
-      'mongodb://auth-mongo-clusterip-service:27017/auth',
+      process.env.MONGO_URI,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
       }
     )
-    console.log('Connected to db')
+    console.log('Connected to AUTH database.')
   } catch (err) {
     throw new DatabaseConnectionEror();
   }

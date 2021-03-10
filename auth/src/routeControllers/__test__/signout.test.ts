@@ -1,8 +1,8 @@
 import request from "supertest";
 import { app } from '../../app';
 
-const postSignupURL: string = '/api/user/signup';
-const postSignoutURL: string = '/api/user/signout';
+const postSignupURL = '/api/user/signup';
+const postSignoutURL = '/api/user/signout';
 
 describe('POST api/user/signout', () => {
 
