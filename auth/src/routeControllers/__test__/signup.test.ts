@@ -1,7 +1,7 @@
 import request from "supertest";
 import { app } from '../../app';
 
-const postSignupURL: string = '/api/user/signup';
+const postSignupURL = '/api/user/signup';
 
 describe('POST api/user/signup', () => {
 
@@ -85,7 +85,7 @@ describe('POST api/user/signup', () => {
         password: "234jkhg4k1j4h"
       })
       .expect(201);
-    
+
     expect(res.get('Set-Cookie')).toBeDefined();
 
   });
