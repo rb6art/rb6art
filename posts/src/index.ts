@@ -22,7 +22,7 @@ const start = async () => {
         useCreateIndex: true
       }
     )
-    console.log('Connected to POST mongo db')
+    console.log('Connected to POSTs mongo db')
   } catch (err) {
     throw new DatabaseConnectionEror();
   }
