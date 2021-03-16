@@ -1,6 +1,4 @@
-auth/
-client/
-common/
-posts/
+*/node_modules
+*/build
 .prettierrc.json
 .vscode/
