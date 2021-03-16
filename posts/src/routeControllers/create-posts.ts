@@ -13,7 +13,5 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
   });
   await post.save();
 
-  console.log(post);
-
   res.sendStatus(201).send(post);
 }

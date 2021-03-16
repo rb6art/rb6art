@@ -1,3 +1,4 @@
+import { getPostById, getAllPosts, getAllPostByUserId } from './../routeControllers/retrieve-posts';
 import { createPost } from './../routeControllers/create-posts';
 import express from "express";
 import { body } from 'express-validator'
@@ -18,6 +19,24 @@ router.post(
   ],
   validateRequest,
   createPost
+)
+
+router.get(
+  '/posts/get/:id',
+  requireAuth,
+  getPostById
+)
+
+router.get(
+  '/posts/getAllByUserId/:userId',
+  requireAuth,
+  getAllPostByUserId
+)
+
+router.get(
+  '/posts/getAll/',
+  requireAuth,
+  getAllPosts
 )
 
 export { router as postsRoutes }

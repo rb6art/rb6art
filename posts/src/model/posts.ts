@@ -38,7 +38,7 @@ const PostsSchema = new mongoose.Schema({
   },
 }, {
   // Massage the return value so it is consistent.
-  // This not a conventional way of doing this.
+  // This is not a conventional way of doing this.
   // In a MVC pattern the view would typically doing this.
   toJSON: {
     transform(doc, ret) {
