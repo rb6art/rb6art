@@ -2,7 +2,8 @@ import express from 'express';
 import cookieSession from 'cookie-session'
 import 'express-async-errors';
 import { json } from 'body-parser'
-import { NotFoundError, errorHandler } from '@rb6art/common';
+import { NotFoundError, errorHandler, currentUser } from '@rb6art/common';
+import { postsRoutes } from './routes/posts-routes';
 
 const app = express();
 
@@ -25,8 +26,12 @@ app.use(
   })
 );
 
+// This middleware will check if the currentUser prop is on the res object
+// if not it will throw an error..
+app.use(currentUser);
+
 // Middlewere Routes
-// app.use('/api', authRoutes);
+app.use('/api', postsRoutes);
 
 app.all('*', async () => {
   throw new NotFoundError();
