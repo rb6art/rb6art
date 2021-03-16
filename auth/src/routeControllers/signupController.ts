@@ -1,4 +1,4 @@
-import { AuthenticationError, JWTService } from '@rb6art/common'
+import { BadRequestError, JWTService } from '@rb6art/common'
 import { Request, Response, NextFunction } from 'express';
 import { User } from '../model/user'
 
@@ -10,7 +10,7 @@ export const postSignupController = async (req: Request, res: Response, next: Ne
   });
 
   if (userData) {
-    throw new AuthenticationError('User with that email already exist');
+    throw new BadRequestError('User with that email already exist');
   }
 
   // Save user info to the DB
@@ -22,7 +22,7 @@ export const postSignupController = async (req: Request, res: Response, next: Ne
 
   // Create the JWT session
   req.session = {
-    jwt: JWTService.getToken(user.email, user.id)
+    jwt: JWTService.createToken(user.email, user.id)
   }
 
   res.status(201).send(user);
