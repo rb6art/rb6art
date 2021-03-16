@@ -11,4 +11,4 @@ export * from './middlewares/require-auth';
 export * from './middlewares/validate-request';
 
 // export * from './services/jwt';
-// export * from './services/password'
+export * from './services/password'
