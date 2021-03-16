@@ -16,7 +16,7 @@ describe('GET api/user/currentUser', () => {
 
     expect(req.body).toHaveProperty('currentUser');
     expect(req.body.currentUser).toHaveProperty('email');
-    expect(req.body.currentUser).toHaveProperty('userID');
+    expect(req.body.currentUser).toHaveProperty('id');
     expect(req.body.currentUser).toHaveProperty('iat');
   });
 
