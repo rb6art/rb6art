@@ -7,7 +7,7 @@ export class JWTService {
   static createToken(email: string, userId: string) {
     // Using the secret in the kubernetes Node
     const jwtSecret = process.env.JWT_SECRET;
-    return sign({ email: email, userID: userId }, jwtSecret!);
+    return sign({ email: email, id: userId }, jwtSecret!);
   }
   /**
    * Verify that a provided JWT Token is valid.
