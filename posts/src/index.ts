@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DatabaseConnectionEror } from '@rb6art/common';
+import { DatabaseConnectionError } from '@rb6art/common';
 import { app } from './app';
 
 const start = async () => {
@@ -24,7 +24,7 @@ const start = async () => {
     )
     console.log('Connected to POSTs mongo db')
   } catch (err) {
-    throw new DatabaseConnectionEror();
+    throw new DatabaseConnectionError();
   }
   app.listen(3000, () => {
     console.log('Post service is listening on port 3000.');
