@@ -6,7 +6,7 @@
   "license": "ISC",
   "description": "Microservice to handle authentication",
   "dependencies": {
-    "@rb6art/common": "^1.0.25",
+    "@rb6art/common": "^1.0.26",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-session": "^2.0.42",
     "@types/express": "^4.17.11",

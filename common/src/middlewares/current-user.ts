@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import { JWTService } from './../services/jwt';
 
 interface UserPayload {
   id: string;
@@ -19,17 +19,15 @@ export const currentUser = (
   res: Response,
   next: NextFunction
 ) => {
+
   if (!req.session?.jwt) {
     return next();
   }
 
   try {
-    const payload = jwt.verify(
-      req.session.jwt,
-      process.env.JWT_KEY!
-    ) as UserPayload;
+    const payload = JWTService.verifyToken(req.session.jwt) as UserPayload;
     req.currentUser = payload;
-  } catch (err) {}
+  } catch (err) { }
 
   next();
 };
