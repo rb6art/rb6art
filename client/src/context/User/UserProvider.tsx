@@ -29,6 +29,8 @@ const UserDispatchContext = createContext<DispachContext>(() => null)
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {
+    case 'SET_LOGOUT':
+      return { loggedIn: false, userID: '', email: '' }
     case 'SET_LOGIN_STATUS':
       return { ...state, loggedIn: action.value }
     case 'SET_USER_ID':

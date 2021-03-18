@@ -1,5 +1,6 @@
 import { Flex, Heading, Box, Link } from '@chakra-ui/react'
 import ThemeToggler from './ThemeToggler'
+// import { AppProps } from 'next/app'
 import AuthButton from './auth/buttons/AuthButton'
 import {
   SignInAction,
@@ -7,13 +8,18 @@ import {
   SignUpAction,
 } from './auth/buttons/actions/ClickActions'
 import { useUser, useDispatchUser } from '../context/User/UserProvider'
+// import { CurrentUser } from '../user/interface'
 
 // import ProfileMenu from './ProfileMenu'
 
+
 const Header = () => {
+
   const userState = useUser()
   const userDispatch = useDispatchUser()
-  const loggedIn = userState.loggedIn
+
+  const loggedIn = userState.loggedIn;
+
 
   const menuItems = [
     {
@@ -62,11 +68,11 @@ const Header = () => {
           <AuthButton
             text="Signout"
             onClickHandler={() => {
-              userDispatch({
-                type: 'SET_LOGIN_STATUS',
-                value: false,
-              })
               SignOutAction()
+              userDispatch({
+                type: 'SET_LOGOUT',
+                value: ''
+              })
             }}
           />
         )}

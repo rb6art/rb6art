@@ -5,6 +5,8 @@ import { AppProps } from 'next/app'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { UserProvider } from '../context/User/UserProvider'
+import serverSideRequest from '../api/serverSideRequest'
+
 
 const PageWrapper = styled.div`
   display: flex;
@@ -12,7 +14,7 @@ const PageWrapper = styled.div`
   flex-direction: column;
 `
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <PageWrapper>
@@ -25,6 +27,25 @@ function MyApp({ Component, pageProps }: AppProps) {
       </PageWrapper>
     </ChakraProvider>
   )
+}
+
+MyApp.getInitialProps = async (appContext: any) => {
+  const client = serverSideRequest(appContext.ctx);
+  const { data } = await client.get('/api/user/currentuser');
+  const currentUser = data.currentUser
+
+  let pageProps = {};
+  if (appContext.Component.getInitialProps) {
+    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  }
+
+  pageProps = {
+    currentUser
+  }
+
+  return {
+    pageProps
+  };
 }
 
 export default MyApp
