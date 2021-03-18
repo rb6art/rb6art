@@ -15,7 +15,7 @@ const theme = extendTheme({
   useSystemColorMode: true,
 
   colors: {
-    black: '#16161D',
+    black: '#17191c',
   },
   fonts,
   breakpoints,

@@ -41,7 +41,7 @@ const SignupForm = () => {
       password,
     },
     onSuccess: (res: SuccessResponse) => {
-      console.log(res)
+      // console.log(res)
       Router.push('/')
     },
   })
