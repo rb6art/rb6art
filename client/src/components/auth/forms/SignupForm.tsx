@@ -13,7 +13,9 @@ import {
   Flex,
   useColorModeValue,
 } from '@chakra-ui/react'
-import useRequest, { SuccessResponse } from '../hooks/use-request'
+import useAuthFormRequest, {
+  SuccessResponse,
+} from '../hooks/use-auth-form-request'
 
 const SignupForm = () => {
   // Theme setup
@@ -33,7 +35,7 @@ const SignupForm = () => {
     isPassValid,
     emailErrorMsg,
     passErrorMsg,
-  } = useRequest({
+  } = useAuthFormRequest({
     url: '/api/user/signup',
     method: 'post',
     body: {

@@ -12,7 +12,9 @@ import {
   Flex,
   useColorModeValue,
 } from '@chakra-ui/react'
-import useRequest, { SuccessResponse } from '../hooks/use-request'
+import useAuthFormRequest, {
+  SuccessResponse,
+} from '../hooks/use-auth-form-request'
 import Router from 'next/router'
 
 const SignInForm = () => {
@@ -33,7 +35,7 @@ const SignInForm = () => {
     isPassValid,
     emailErrorMsg,
     passErrorMsg,
-  } = useRequest({
+  } = useAuthFormRequest({
     url: '/api/user/signin',
     method: 'post',
     body: {

@@ -17,7 +17,7 @@ export interface SuccessResponse {
   id: string
 }
 
-const useRequest = ({ url, method, body, onSuccess }: RequestDocument) => {
+const useAuthFormRequest = ({ url, method, body, onSuccess }: RequestDocument) => {
 
   const [isEmailValid, setIsEmailValid] = useState(true)
   const [isPassValid, setIsPassValid] = useState(true)
@@ -67,4 +67,4 @@ const useRequest = ({ url, method, body, onSuccess }: RequestDocument) => {
   return { isEmailValid, isPassValid, emailErrorMsg, passErrorMsg, makeRequest }
 }
 
-export default useRequest
+export default useAuthFormRequest
