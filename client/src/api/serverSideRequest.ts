@@ -18,8 +18,18 @@ export default ({ req }: any): AxiosInstance => {
    * This is needed bc we are making this call inside of the kubernetes cluster and on the server.
    * { http://NAMEOFSERVICE.NAMESPACE.svc.cluster.local }  the service in this case is Ingress Nginx
    */
-  return axios.create({
-    baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/',
-    headers: req.headers
-  });
+
+  if (typeof window === 'undefined') {
+
+    return axios.create({
+      baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/',
+      headers: req.headers
+    });
+
+  } else {
+    // We must be on the browser
+    return axios.create({
+      baseURL: '/',
+    });
+  }
 }

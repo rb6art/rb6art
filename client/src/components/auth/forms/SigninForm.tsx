@@ -12,7 +12,8 @@ import {
   Flex,
   useColorModeValue,
 } from '@chakra-ui/react'
-import useRequest from '../hooks/use-request'
+import useRequest, { SuccessResponse } from '../hooks/use-request'
+import Router from 'next/router'
 
 const SignInForm = () => {
   // Theme setup
@@ -39,8 +40,9 @@ const SignInForm = () => {
       email,
       password,
     },
-    onSuccess: (payload) => {
-      console.log(payload)
+    onSuccess: (res: SuccessResponse) => {
+      // console.log(res)
+      Router.push('/')
     },
   })
 
