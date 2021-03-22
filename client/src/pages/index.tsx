@@ -1,10 +1,7 @@
-import { useEffect } from 'react'
 import { Hero } from '../components/Hero'
 import { Container } from '../components/base/Container'
-import { AppProps } from 'next/app'
 import { Box, Flex } from '@chakra-ui/react'
 import styled from '@emotion/styled'
-import { useDispatchUser, useUser } from '../context/User/UserProvider'
 import { CurrentUser } from '../context/User/interface'
 
 const height = '90vh'
@@ -17,35 +14,8 @@ const BackgroundWrapper = styled.div`
   z-index: -1;
 `
 
-interface _AppProps extends AppProps {
-  currentUser: CurrentUser
-}
-
-const Index = (pageProps: _AppProps) => {
-
-  const userState = useUser()
-  const userDispatch = useDispatchUser()
-
-  useEffect((): void => {
-    const user = pageProps.currentUser
-
-    if(user && !userState.userID){
-      userDispatch({
-        type: 'SET_LOGIN_STATUS',
-        value: true,
-      })
-      userDispatch({
-        type: 'SET_USER_ID',
-        value: user.id || '',
-      })
-      userDispatch({
-        type: 'SET_EMAIL',
-        value: user.email || '',
-      })
-    }
-
-  }, [pageProps.currentUser])
-
+const Index = ({ currentUser }: { currentUser: CurrentUser }) => {
+  const email = currentUser?.email
   return (
     <div>
       <BackgroundWrapper>
@@ -56,7 +26,7 @@ const Index = (pageProps: _AppProps) => {
           <Box mr="20" ml="20" h="100vh">
             <Hero />
             <Box bg="red" textAlign="center">
-              welcome 
+              welcome -- {email}
             </Box>
           </Box>
         </Flex>

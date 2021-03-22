@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 
-export default ({ req }: any): AxiosInstance => {
+const serverSiderequest = ({ req }: any): AxiosInstance => {
   /**
    * Cross Namespace Service Communication in Kubernetes using NGINX
    *
@@ -33,3 +33,5 @@ export default ({ req }: any): AxiosInstance => {
     });
   }
 }
+
+export default serverSiderequest
