@@ -7,19 +7,18 @@ import {
   SignOutAction,
   SignUpAction,
 } from './auth/buttons/actions/ClickActions'
-import { useUser, useDispatchUser } from '../context/User/UserProvider'
-// import { CurrentUser } from '../user/interface'
+import { useEffect } from 'react'
+import { CurrentUser } from '../context/User/interface'
 
 // import ProfileMenu from './ProfileMenu'
 
+const Header = ({ currentUser }: { currentUser: CurrentUser }) => {
+  const loggedIn = currentUser?.loggedIn
+  // const email = currentUser?.email
 
-const Header = () => {
-
-  const userState = useUser()
-  const userDispatch = useDispatchUser()
-
-  const loggedIn = userState.loggedIn;
-
+  useEffect(() => {
+    console.log(currentUser)
+  })
 
   const menuItems = [
     {
@@ -69,10 +68,6 @@ const Header = () => {
             text="Signout"
             onClickHandler={() => {
               SignOutAction()
-              userDispatch({
-                type: 'SET_LOGOUT',
-                value: ''
-              })
             }}
           />
         )}
