@@ -1,5 +1,4 @@
 import { ChakraProvider, Divider } from '@chakra-ui/react'
-import { CookiesProvider } from 'react-cookie'
 import styled from '@emotion/styled'
 import theme from '../theme'
 import { AppProps } from 'next/app'
@@ -18,14 +17,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <PageWrapper>
-        <CookiesProvider>
+       
           {/* <UserProvider> */}
           <Header {...pageProps} />
           <Component {...pageProps} />
           <Divider />
           <Footer />
           {/* </UserProvider> */}
-        </CookiesProvider>
+      
       </PageWrapper>
     </ChakraProvider>
   )
