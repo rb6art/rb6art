@@ -27,8 +27,8 @@ build:
             dest: .
           - src: '**/*.tsx'
             dest: .
-    - image: cdub/rb6art-posts
-      context: packages/posts
+    - image: cdub/rb6art-image-upload
+      context: packages/image-upload
       docker:
         dockerfile: Dockerfile
       sync:
