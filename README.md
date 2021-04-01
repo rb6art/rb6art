@@ -1,4 +1,4 @@
-# Microservice app allowing users to upload and view Rainbow 6 Art.
+# Microservice app allowing users to view and upload Rainbow 6 Art.
 
 Using:
   - Next.js
