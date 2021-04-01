@@ -5,7 +5,6 @@ import multer from 'multer'
 
 const router = express.Router();
 
-
 const upload = multer({
   storage: multer.diskStorage({
     // destination to which the file will be stored.
@@ -36,7 +35,7 @@ const upload = multer({
 router.post(
   '/image/upload',
   requireAuth,
-  upload.single('file'),
+  upload.single('image'),
   uploadImage
 )
 

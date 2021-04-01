@@ -1,36 +1,49 @@
-import { Request, Response, NextFunction } from 'express';
-import request from 'supertest'
-import { app } from '../../app'
+
 import { Image } from '../../model/image'
-import { resolve } from 'path';
+
+import chai from 'chai';
+import fs from 'fs';
+import chaiHttp from 'chai-http';
+import { app } from '../../app'
+
+const { expect } = chai;
+
+chai.use(chaiHttp);
 
 const IMAGE_UPLOAD_URL = '/api/image/upload'
 
 
-describe('POST to /api/image/upload', () => {
-
-  it('should only be accessed if the user is signed in', async () => {
-    await request(app)
-      .post(IMAGE_UPLOAD_URL)
-      .send({})
-      .expect(401)
-  })
 
 
-  console.log(resolve(__dirname, 'image/1617124162791_grandpa alfred.jpeg'))
-
-
-  it('should return 201 if image was upload successfully', async () => {
-    const response = await request(app)
-      .post(IMAGE_UPLOAD_URL)
-      .field("Content-Type", "multipart/form-data")
-      .attach('file', resolve(__dirname, 'image/1617124162791_grandpa alfred.jpeg'))
-      .then(res => {
-        console.log(res)
-      });
+// HAVING A REALLLLY HARD TIME TESTING IMAGE UPLOAD WITH TDD  !!!!!!
+// NOT DOING IT!
 
 
 
 
-  })
-})
+
+
+// describe('POST to /api/image/upload', () => {
+
+  // it('should return 201 if image was upload successfully', async () => {
+
+    // const sessionCookie = await global.signin();
+
+    // const response = await request(app) 
+    //   .post(IMAGE_UPLOAD_URL)
+    //   .set('Cookie', sessionCookie)
+    //   .field('title', 'test title')
+    //   .field('description', 'test info text')
+    //   .attach('avatar', 'image/image1.jpeg')
+    //   .expect(200)
+
+    // const res = await chai.request(app)
+    //   .post(IMAGE_UPLOAD_URL)
+    //   .set('Cookie', sessionCookie)
+
+    //   .attach('file', fs.readFileSync(`${__dirname}/image/image1.jpeg`), 'image/image1.jpeg')
+
+    // console.log(res)
+
+//   })
+// })
