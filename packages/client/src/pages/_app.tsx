@@ -2,7 +2,7 @@ import { ChakraProvider, Divider } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import theme from '../theme'
 import { AppProps } from 'next/app'
-import Header from '../components/Header'
+import Header from '../components/header/Header'
 import Footer from '../components/Footer'
 // import { UserProvider } from '../context/User/UserProvider'
 import getCurrentUser from '../api/getCurrentUser'
@@ -16,16 +16,14 @@ const PageWrapper = styled.div`
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <PageWrapper>
-       
-          {/* <UserProvider> */}
-          <Header {...pageProps} />
-          <Component {...pageProps} />
-          <Divider />
-          <Footer />
-          {/* </UserProvider> */}
-      
-      </PageWrapper>
+      {/* <PageWrapper> */}
+      {/* <UserProvider> */}
+      <Header {...pageProps} />
+      <Component {...pageProps} />
+      <Divider />
+      <Footer />
+      {/* </UserProvider> */}
+      {/* </PageWrapper> */}
     </ChakraProvider>
   )
 }

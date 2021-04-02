@@ -27,6 +27,8 @@ build:
             dest: .
           - src: '**/*.tsx'
             dest: .
+          - src: '**/*.scss'
+            dest: .
     - image: cdub/rb6art-image-upload
       context: packages/image-upload
       docker:
