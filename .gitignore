@@ -1,5 +1,5 @@
 node_modules
 */node_modules
 */build
-.prettierrc.json
-.vscode/
+# .prettierrc.json
+# .vscode/
