@@ -7,5 +7,4 @@ Using:
   - Docker
   - Kubernetes
   - Ingress
-  - NGINX
   - Skaffold
