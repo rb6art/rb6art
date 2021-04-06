@@ -1,4 +1,4 @@
-import { ChakraProvider, Divider } from '@chakra-ui/react'
+import { ChakraProvider, Divider, Flex } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import theme from '../theme'
 import { AppProps } from 'next/app'
@@ -18,10 +18,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ChakraProvider resetCSS theme={theme}>
       {/* <PageWrapper> */}
       {/* <UserProvider> */}
+
       <Header {...pageProps} />
       <Component {...pageProps} />
-      <Divider />
       <Footer />
+
       {/* </UserProvider> */}
       {/* </PageWrapper> */}
     </ChakraProvider>

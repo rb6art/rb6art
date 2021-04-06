@@ -4,9 +4,8 @@ import { Box } from '@chakra-ui/react'
 export const Container = (props: any) => {
   return (
     <Box
-      height="80vh"
       minH="650px"
-      margin="20px 50px;"
+      margin="20px 100px;"
       // className={styles['base-container']}
       {...props}
     />
