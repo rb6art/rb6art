@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-upload-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-upload
+  template:
+    metadata:
+      labels:
+        app: image-upload
+    spec:
+      containers:
+        - name: image-upload
+          image: cdub/rb6art-image-upload
+          env:
+            - name: JWT_SECRET # This will be the name of the env var .
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_SECRET
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-upload-clusterip-service
+spec:
+  selector:
+    app: image-upload
+  type: ClusterIP
+  ports:
+    - name: image-upload
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

@@ -17,7 +17,9 @@
     "framer-motion": "^3.5.2",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-dropzone": "^11.3.2",
+    "sass": "^1.32.8"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",

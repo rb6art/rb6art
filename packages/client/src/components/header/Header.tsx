@@ -1,14 +1,14 @@
 import { Flex, Heading, Box, Link } from '@chakra-ui/react'
-import ThemeToggler from './ThemeToggler'
+import ThemeToggler from '../ThemeToggler'
 // import { AppProps } from 'next/app'
-import AuthButton from './auth/buttons/AuthButton'
+import AuthButton from '../auth/buttons/AuthButton'
 import {
   SignInAction,
   SignOutAction,
   SignUpAction,
-} from './auth/buttons/actions/ClickActions'
+} from '../auth/buttons/actions/ClickActions'
 import { useEffect } from 'react'
-import { CurrentUser } from '../context/User/interface'
+import { CurrentUser } from '../../context/User/interface'
 
 // import ProfileMenu from './ProfileMenu'
 
@@ -22,8 +22,8 @@ const Header = ({ currentUser }: { currentUser: CurrentUser }) => {
 
   const menuItems = [
     {
-      title: 'Posts',
-      href: '/posts',
+      title: 'Upload Image',
+      href: '/upload',
     },
   ]
 
