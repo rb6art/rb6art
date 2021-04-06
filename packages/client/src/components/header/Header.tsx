@@ -61,18 +61,19 @@ const Header = ({ currentUser }: { currentUser: CurrentUser }) => {
 
       <Flex>
         {!loggedIn && (
-          <AuthButton text="Sign In" onClickHandler={SignInAction} />
+          <AuthButton onClickHandler={SignInAction}>Sign In</AuthButton>
         )}
         {loggedIn && (
           <AuthButton
-            text="Signout"
             onClickHandler={() => {
               SignOutAction()
             }}
-          />
+          >
+            Signout
+          </AuthButton>
         )}
         {!loggedIn && (
-          <AuthButton text="Create Account" onClickHandler={SignUpAction} />
+          <AuthButton onClickHandler={SignUpAction}>Create Account</AuthButton>
         )}
       </Flex>
       <Box>

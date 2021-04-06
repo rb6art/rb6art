@@ -1,13 +1,15 @@
 import { Box } from '@chakra-ui/react'
-// import styles from './Container.module.scss'
+import React from 'react'
 
-export const Container = (props: any) => {
+interface BaseContainerProps {
+  id?: string
+  margin?: string
+  children: React.ReactNode
+}
+export const Container = ({ id, margin, children }: BaseContainerProps) => {
   return (
-    <Box
-      minH="650px"
-      margin="20px 100px;"
-      // className={styles['base-container']}
-      {...props}
-    />
+    <Box id={id} minH="650px" m={margin || '20px 15%'}>
+      {children}
+    </Box>
   )
 }

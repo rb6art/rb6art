@@ -17,6 +17,7 @@ import { ERRORS } from './constants/errors'
 import axios from 'axios'
 
 import styles from './ImageUploadForm.module.scss'
+import FormSubmitButton from '../../FormSubmitButton'
 
 interface LocalState {
   descriptionField: string
@@ -179,18 +180,10 @@ const ImageUploadForm = () => {
                 </GridItem>
                 <GridItem colSpan={1}></GridItem>
               </Grid>
-              <Button
-                bg={bg}
-                color={color}
-                type="submit"
-                variant="outline"
-                width="full"
-                onClick={handleOnSubmit}
-                _hover={{ bg: hoverColor }}
-                _focus={{ boxShadow: 'outline' }}
-              >
-                Submit
-              </Button>
+
+              <FormSubmitButton onClick={handleOnSubmit}>
+                Upload Image
+              </FormSubmitButton>
             </FormControl>
           </form>
         </div>
