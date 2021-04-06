@@ -2,12 +2,11 @@
 
 Using:
 
-- Next.js
-- Chakra UI
-- Express
-- Docker
-- Kubernetes
-- Ingress
-- NGINX
-- Lerna
-- Skaffold
+  - Next.js
+  - Chakra UI
+  - Express
+  - Docker
+  - Kubernetes
+  - Ingress
+  - Lerna
+  - Skaffold
