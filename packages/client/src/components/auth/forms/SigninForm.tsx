@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react'
 import useRequest, { SuccessResponse } from '../hooks/use-request'
 import Router from 'next/router'
+import FormSubmitButton from '../../FormSubmitButton'
 
 const SignInForm = () => {
   // Theme setup
@@ -57,8 +58,8 @@ const SignInForm = () => {
   }
 
   return (
-    <Container mt="28">
-      <Heading mb="10">Login</Heading>
+    <Container pt="150px">
+      {/* <Heading mb="10">Login</Heading> */}
       <form>
         <FormControl id="email" pb="3" isRequired>
           <Flex alignItems="center" pb="5px">
@@ -109,19 +110,7 @@ const SignInForm = () => {
           </InputGroup>
         </FormControl>
 
-        <Button
-          bg={bg}
-          color={color}
-          type="submit"
-          variant="outline"
-          width="full"
-          mt={4}
-          onClick={handleSubmit}
-          _hover={{ bg: hoverColor }}
-          _focus={{ boxShadow: 'outline' }}
-        >
-          Login
-        </Button>
+        <FormSubmitButton onClick={handleSubmit}>Sign In</FormSubmitButton>
       </form>
     </Container>
   )
