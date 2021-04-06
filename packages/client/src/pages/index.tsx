@@ -1,5 +1,5 @@
 import { Hero } from '../components/Hero'
-import { Container } from '../components/base/Container'
+import { Container } from '../components/base/container/Container'
 import { Box, Flex } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import { CurrentUser } from '../context/User/interface'

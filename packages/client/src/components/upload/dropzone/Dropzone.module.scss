@@ -1,0 +1,17 @@
+.drop-zone {
+  border: 2px dashed #e9ebeb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-height: 200px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.dropzone-content {
+  text-align: center;
+}

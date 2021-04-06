@@ -15,9 +15,9 @@ spec:
             backend:
               serviceName: auth-clusterip-service
               servicePort: 3000
-          - path: /api/posts/?(.*)
+          - path: /api/image/?(.*)
             backend:
-              serviceName: posts-clusterip-service
+              serviceName: image-upload-clusterip-service
               servicePort: 3000
           - path: /?(.*)
             backend:

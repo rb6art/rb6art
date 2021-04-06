@@ -1,0 +1,64 @@
+.error-message {
+  color: #f21e08;
+  background: #fff0f0;
+  padding: 1rem;
+}
+
+.upload-section {
+  margin-bottom: 10px;
+}
+
+.image-preview {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+
+.preview-image {
+  object-fit: contain;
+  height: 90%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.preview-section {
+  display: flex;
+  min-height: 200px;
+  justify-content: center;
+  align-items: center;
+  // border: 2px dotted #e9ebeb;
+  height: auto;
+  padding-bottom: 5px;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  img {
+    max-height: 400px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .upload-section {
+    flex-direction: column;
+
+    & > div {
+      width: 100%;
+    }
+  }
+  .image-preview {
+    margin-left: 0;
+    height: 300px;
+  }
+  .upload-section {
+    height: unset;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .drop-zone {
+    width: 100%;
+  }
+}
