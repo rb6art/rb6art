@@ -12,13 +12,11 @@ import {
   useColorModeValue,
   Flex,
 } from '@chakra-ui/react'
-
 import FileDropper, { ImagePreview, ImageFile } from '../dropzone/Dropzone'
+import { ERRORS } from './constants/errors'
+import axios from 'axios'
 
 import styles from './ImageUploadForm.module.scss'
-
-import axios from 'axios'
-import { ERRORS } from './constants/errors'
 
 interface LocalState {
   descriptionField: string
@@ -34,7 +32,6 @@ const ImageUploadForm = () => {
   const color = useColorModeValue('white', 'gray.800')
   const hoverColor = 'orange.400'
   const inputBorderColor = useColorModeValue('#A0AEC0', '#E2E8F0')
-  // const dropzoneErrorColor = useColorModeValue('#F6AD55', '#DD6B20')
 
   // Local State
   const [state, setState] = useState<LocalState>({
@@ -45,7 +42,7 @@ const ImageUploadForm = () => {
     fileDropError: '',
   })
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setState({
       ...state,
       [event.target.name]: event.target.value,
@@ -89,17 +86,18 @@ const ImageUploadForm = () => {
     event.preventDefault()
     const { descriptionField, imageFile } = state
 
-    validate(state).then(() => {
+    validate(state).then(async () => {
       if (imageFile) {
         const formData = new FormData()
         formData.append('file', imageFile)
         formData.append('description', descriptionField)
 
-        // await axios.post(`${API_URL}/upload`, formData, {
-        //   headers: {
-        //     'Content-Type': 'multipart/form-data',
-        //   },
-        // })
+        console.log(formData)
+        await axios.post(`/api/image/upload`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
       }
     })
   }
@@ -109,7 +107,6 @@ const ImageUploadForm = () => {
       <Box w="100%">
         <div className="upload-section">
           <form className="image-upload-form">
-            {/* <GridItem colSpan={2}> */}
             <FormControl id="description" isRequired>
               <Grid templateColumns="repeat(2, 1fr)" gap={2}>
                 <GridItem colSpan={2} mb="2">
@@ -117,16 +114,16 @@ const ImageUploadForm = () => {
                     <FormLabel p="0" mb="1">
                       Description
                     </FormLabel>
-                    <Textarea
+                    <Text
                       p="0"
                       m="0"
                       color="red"
                       isInvalid={!state.descriptionFieldError}
                     >
                       {state.descriptionFieldError}
-                    </Textarea>
+                    </Text>
                   </Flex>
-                  <Input
+                  <Textarea
                     mb="5"
                     isInvalid={state.descriptionFieldError !== ''}
                     borderColor={inputBorderColor}
@@ -180,23 +177,21 @@ const ImageUploadForm = () => {
                     )}
                   </div>
                 </GridItem>
-                <GridItem colSpan={1}>
-                  <Button
-                    bg={bg}
-                    color={color}
-                    type="submit"
-                    variant="outline"
-                    width="full"
-                    onClick={handleOnSubmit}
-                    _hover={{ bg: hoverColor }}
-                    _focus={{ boxShadow: 'outline' }}
-                  >
-                    Submit
-                  </Button>
-                </GridItem>
+                <GridItem colSpan={1}></GridItem>
               </Grid>
+              <Button
+                bg={bg}
+                color={color}
+                type="submit"
+                variant="outline"
+                width="full"
+                onClick={handleOnSubmit}
+                _hover={{ bg: hoverColor }}
+                _focus={{ boxShadow: 'outline' }}
+              >
+                Submit
+              </Button>
             </FormControl>
-            {/* </GridItem> */}
           </form>
         </div>
       </Box>
