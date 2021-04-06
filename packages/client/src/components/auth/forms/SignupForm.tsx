@@ -14,12 +14,10 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import useRequest, { SuccessResponse } from '../hooks/use-request'
+import FormSubmitButton from '../../FormSubmitButton'
 
 const SignupForm = () => {
   // Theme setup
-  const bg = useColorModeValue('orange.300', 'orange.300')
-  const color = useColorModeValue('white', 'gray.800')
-  const hoverColor = 'orange.400'
   const inputBorderColor = useColorModeValue('gray.400', 'gray.200')
 
   // Local state
@@ -57,8 +55,8 @@ const SignupForm = () => {
   }
 
   return (
-    <Container mt="28">
-      <Heading mb="10">Create account.</Heading>
+    <Container pt="150px">
+      {/* <Heading mb="10">Create account.</Heading> */}
       <form>
         <FormControl id="email" pb="3" isRequired>
           <Flex alignItems="center" pb="5px">
@@ -109,19 +107,7 @@ const SignupForm = () => {
           </InputGroup>
         </FormControl>
 
-        <Button
-          bg={bg}
-          color={color}
-          type="submit"
-          variant="outline"
-          width="full"
-          mt={4}
-          onClick={handleSubmit}
-          _hover={{ bg: hoverColor }}
-          _focus={{ boxShadow: 'outline' }}
-        >
-          Signup
-        </Button>
+        <FormSubmitButton onClick={handleSubmit}>Signup</FormSubmitButton>
       </form>
     </Container>
   )

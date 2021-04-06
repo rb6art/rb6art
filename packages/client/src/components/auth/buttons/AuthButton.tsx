@@ -1,13 +1,14 @@
 import { Button, useBreakpointValue } from '@chakra-ui/react'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
+import React from 'react'
 
 interface AuthButtonProps {
-  text: string
+  children: React.ReactNode
   onClickHandler(event?: React.MouseEvent<HTMLElement>): void
 }
 
 const AuthButton = ({
-  text,
+  children,
   onClickHandler,
 }: AuthButtonProps): ReactJSXElement => {
   // const buttonSize = useBreakpointValue({ base: 'xs', md: 'sm' })
@@ -24,7 +25,7 @@ const AuthButton = ({
         onClickHandler(event)
       }}
     >
-      {text}
+      {children}
     </Button>
   )
 }

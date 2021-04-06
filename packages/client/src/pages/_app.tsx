@@ -1,30 +1,16 @@
-import { ChakraProvider, Divider, Flex } from '@chakra-ui/react'
-import styled from '@emotion/styled'
+import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../theme'
 import { AppProps } from 'next/app'
 import Header from '../components/header/Header'
 import Footer from '../components/Footer'
-// import { UserProvider } from '../context/User/UserProvider'
 import getCurrentUser from '../api/getCurrentUser'
-
-const PageWrapper = styled.div`
-  display: flex;
-  // height: 100vh;
-  flex-direction: column;
-`
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      {/* <PageWrapper> */}
-      {/* <UserProvider> */}
-
       <Header {...pageProps} />
       <Component {...pageProps} />
       <Footer />
-
-      {/* </UserProvider> */}
-      {/* </PageWrapper> */}
     </ChakraProvider>
   )
 }
